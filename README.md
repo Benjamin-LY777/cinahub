@@ -1,4 +1,4 @@
-# 影控 (CineHub)
+# 影控 (CinaHub)
 
 <div align="center">
 
@@ -21,10 +21,11 @@
 ## 核心功能
 
 - **纯软件方案** — 无需中控主机，App 通过局域网直连设备，零额外硬件成本
-- **设备自动发现** — 局域网扫描（mDNS/Bonjour），一键添加设备
+- **设备自动发现** — 局域网扫描，一键添加设备（Apple TV 在 iOS 上因系统限制需手动输入 IP）
 - **完整控制** — 开关机、音量调节、静音、输入源切换
 - **声场模式** — MOVIE / MUSIC / GAME 快捷切换，当前解码模式实时显示
 - **虚拟遥控器** — 方向键、菜单、返回、确认等全功能遥控，带触感反馈
+- **新型输入体验** — PIN 码采用滚轮选择，手动 IP 采用屏内数字键盘（无需输入点号、不依赖系统键盘，iOS / Android 完全一致）
 - **房间管理** — 自定义房间名称与图标（客厅 / 影音室 / 卧室 / 厨房等 12 款 Material 风格图标），设备以卡片网格展示，点击设备卡片直达控制页
 - **多设备分区** — 支持添加多台设备，按房间分区控制
 - **三主题** — 星幕深色 / 水墨国风 / 霜璃毛玻璃，自由切换
@@ -65,15 +66,37 @@
 
 通过 WebSocket + JSON-RPC 直连控制，支持开机（Wake-on-LAN 定向广播唤醒）、关机、音量、遥控等功能。
 
+| 功能 | 说明 |
+|------|------|
+| 电源 | 开机 / 待机（Wake-on-LAN 定向广播唤醒） |
+| 音量 | 步进增减 |
+| 输入源 | 切换 |
+| 遥控器 | 方向键 + 主页 / 返回 / 菜单 / 确认 |
+
+### Sony Bravia 电视
+
+通过 REST API + IRCC 直连控制，支持开关机、音量、输入源切换与虚拟遥控。
+
+| 功能 | 说明 |
+|------|------|
+| 电源 | 开机 / 待机（Wake-on-LAN 唤醒） |
+| 音量 | 步进增减 |
+| 输入源 | 切换 |
+| 遥控器 | 方向键 + 主页 / 返回 / 菜单 / 确认 |
+
 ### Apple TV
 
-通过 Bonjour/mDNS（`_companion-link._tcp`）自动发现，支持添加、控制与虚拟遥控。
+通过 Bonjour/mDNS（`_companion-link._tcp`）发现与控制。
+
+- **Android**：支持局域网自动发现，一键添加。
+- **iOS**：因 Apple「Multicast Networking」权限仍在审核中，当前需**手动输入 Apple TV 的 IP 地址**添加（功能本身完全可用，仅发现方式不同）。
+
+添加后支持 PIN 码配对与虚拟遥控。
 
 ## 计划支持
 
 | 设备 | 品牌 | 协议 | 状态 |
 |------|------|------|------|
-| Bravia 电视 | Sony | REST API + IRCC | 计划中 |
 | 投影机 | Epson | ESC/VP21 | 计划中 |
 | LG OLED | LG | WebSocket | 计划中 |
 
@@ -111,13 +134,14 @@
 - Denon/Marantz Telnet + HTTP 协议
 - 小米电视 HTTP 6095 协议
 - Samsung WebSocket + Wake-on-LAN
+- Sony Bravia REST API + IRCC
 - Apple TV Bonjour/mDNS 发现
 
 ---
 
 <a name="english"></a>
 
-# CineHub
+# CinaHub
 
 <div align="center">
 
@@ -131,7 +155,7 @@
 
 ## Overview
 
-**CineHub** is a pure-software home theater / AV control app. No expensive control processor needed (like Nice/ELAN, Control4) — your phone connects directly to receivers, TVs and other theater devices over your local network at **zero extra hardware cost**.
+**CinaHub** is a pure-software home theater / AV control app. No expensive control processor needed (like Nice/ELAN, Control4) — your phone connects directly to receivers, TVs and other theater devices over your local network at **zero extra hardware cost**.
 
 - Chinese / English bilingual, follows system language automatically after install
 - Three themes: Starveil (dark), Inkwash (Chinese ink), Frostglass (frosted glass)
@@ -140,10 +164,11 @@
 ## Key Features
 
 - **Pure Software** — No control processor needed, app connects directly to devices over LAN
-- **Auto Discovery** — Scan local network (mDNS/Bonjour), add devices with one tap
+- **Auto Discovery** — Scan local network, add devices with one tap (Apple TV requires manual IP entry on iOS due to a system limitation)
 - **Full Control** — Power, volume, mute, input source switching
 - **Sound Mode** — MOVIE / MUSIC / GAME quick switch with real-time decoder display
 - **Virtual Remote** — Full D-pad + menu/back/confirm remote with haptic feedback
+- **New Input UX** — PIN entered via scroll wheel; manual IP via on-screen numeric keypad (no dots to type, no system keyboard; consistent on iOS & Android)
 - **Room Management** — Custom room names & icons (12 Material-style icons: living room, home theater, bedroom, kitchen…), devices shown as a card grid; tap a device card to jump straight to its control page
 - **Multi-Device** — Control multiple devices, organized by room
 - **Three Themes** — Starveil / Inkwash / Frostglass
@@ -184,15 +209,37 @@ Direct control via HTTP (port 6095). All Xiaomi and Redmi TV models supported.
 
 Control via WebSocket + JSON-RPC: power (Wake-on-LAN directed broadcast), volume, remote, etc.
 
+| Feature | Description |
+|---------|-------------|
+| Power | On / Standby (Wake-on-LAN directed broadcast) |
+| Volume | Step up/down |
+| Input Source | Switch |
+| Remote | D-pad + Home/Back/Menu/OK |
+
+### Sony Bravia TV
+
+Control via REST API + IRCC: power, volume, input source switching and virtual remote.
+
+| Feature | Description |
+|---------|-------------|
+| Power | On / Standby (Wake-on-LAN) |
+| Volume | Step up/down |
+| Input Source | Switch |
+| Remote | D-pad + Home/Back/Menu/OK |
+
 ### Apple TV
 
-Auto-discovered via Bonjour/mDNS (`_companion-link._tcp`); add, control and use the virtual remote.
+Discovered & controlled via Bonjour/mDNS (`_companion-link._tcp`).
+
+- **Android**: automatic LAN discovery, one-tap add.
+- **iOS**: because Apple's "Multicast Networking" entitlement is still under review, you currently need to **enter the Apple TV's IP address manually** (full functionality works; only the discovery method differs).
+
+Supports PIN pairing and virtual remote after adding.
 
 ## Planned Support
 
 | Device | Brand | Protocol | Status |
 |--------|-------|----------|--------|
-| Bravia TV | Sony | REST API + IRCC | Planned |
 | Projector | Epson | ESC/VP21 | Planned |
 | LG OLED | LG | WebSocket | Planned |
 
@@ -208,6 +255,7 @@ Visit [Releases](https://github.com/Benjamin-LY777/cinahub/releases) to download
 - Denon/Marantz Telnet + HTTP Protocol
 - Xiaomi TV HTTP 6095 Protocol
 - Samsung WebSocket + Wake-on-LAN
+- Sony Bravia REST API + IRCC
 - Apple TV Bonjour/mDNS Discovery
 
 ---
