@@ -7,13 +7,26 @@
   <meta name="description" content="CinaHub turns any phone or tablet into a universal remote for Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku and VidOn — no IR blaster needed.">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap');
+    body { font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif; }
     .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); }
     .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
   </style>
 </head>
 <body class="bg-slate-950 text-white">
+
+  <!-- Language switcher -->
+  <div class="fixed top-4 right-4 z-50">
+    <select id="langSelect" aria-label="Language"
+            class="bg-white/10 text-white border border-white/20 rounded-lg px-3 py-2 text-sm backdrop-blur hover:bg-white/20 transition cursor-pointer">
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+      <option value="ja">日本語</option>
+      <option value="de">Deutsch</option>
+      <option value="es">Español</option>
+      <option value="pt">Português</option>
+    </select>
+  </div>
 
   <!-- Hero -->
   <section class="hero-gradient min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center">
@@ -21,33 +34,33 @@
       <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
         CinaHub
       </h1>
-      <p class="text-2xl md:text-3xl font-semibold text-blue-400 mb-4">
+      <p class="text-2xl md:text-3xl font-semibold text-blue-400 mb-4" data-i18n="hero_sub">
         Universal TV & AV Remote — No IR Needed
       </p>
-      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto" data-i18n="hero_desc">
         Control your Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku and VidOn devices over Wi-Fi. Any phone or tablet works, even without an infrared blaster.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
         <a href="https://apps.microsoft.com/store/detail/9pdxn0618930" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-200 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 rounded-xl font-bold hover:bg-slate-200 transition" data-i18n="nav_ms">
           Get it on Microsoft Store
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.cinahub.app" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-bold hover:bg-green-600 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white rounded-xl font-bold hover:bg-green-600 transition" data-i18n="nav_gp">
           Get it on Google Play
         </a>
         <a href="https://apps.apple.com/us/app/cinahub/id6790016957" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition" data-i18n="nav_as">
           Download on the App Store
         </a>
       </div>
 
       <div class="flex flex-wrap justify-center gap-6 text-slate-400 text-sm">
-        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Wi-Fi / LAN control</span>
-        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Auto device discovery</span>
-        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> 6 languages</span>
-        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> Free</span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span data-i18n="tag_wifi">Wi-Fi / LAN control</span></span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span data-i18n="tag_discovery">Auto device discovery</span></span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span data-i18n="tag_lang">6 languages</span></span>
+        <span class="flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span data-i18n="tag_free">Free</span></span>
       </div>
     </div>
   </section>
@@ -55,39 +68,39 @@
   <!-- Supported Devices -->
   <section class="py-20 px-6 bg-slate-900">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Supported Devices</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-i18n="sec_devices">Supported Devices</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">🎛️</div>
-          <div class="font-semibold">Denon AVR</div>
+          <div class="font-semibold" data-i18n="dev_denon">Denon AVR</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">🎛️</div>
-          <div class="font-semibold">Marantz AVR</div>
+          <div class="font-semibold" data-i18n="dev_marantz">Marantz AVR</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">📺</div>
-          <div class="font-semibold">Apple TV</div>
+          <div class="font-semibold" data-i18n="dev_appletv">Apple TV</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">📺</div>
-          <div class="font-semibold">Sony BRAVIA</div>
+          <div class="font-semibold" data-i18n="dev_sony">Sony BRAVIA</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">📺</div>
-          <div class="font-semibold">Samsung TV</div>
+          <div class="font-semibold" data-i18n="dev_samsung">Samsung TV</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">📺</div>
-          <div class="font-semibold">Xiaomi / Redmi TV</div>
+          <div class="font-semibold" data-i18n="dev_xiaomi">Xiaomi / Redmi TV</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">📡</div>
-          <div class="font-semibold">Roku</div>
+          <div class="font-semibold" data-i18n="dev_roku">Roku</div>
         </div>
         <div class="glass rounded-xl p-6 text-center">
           <div class="text-2xl mb-2">🎬</div>
-          <div class="font-semibold">VidOn</div>
+          <div class="font-semibold" data-i18n="dev_vidon">VidOn</div>
         </div>
       </div>
     </div>
@@ -96,19 +109,19 @@
   <!-- Features -->
   <section class="py-20 px-6 bg-slate-950">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Why CinaHub?</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12" data-i18n="sec_why">Why CinaHub?</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="glass rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-3 text-blue-400">No IR blaster required</h3>
-          <p class="text-slate-300">Works on phones and tablets that have no infrared hardware. All control happens over your local Wi-Fi network.</p>
+          <h3 class="text-xl font-bold mb-3 text-blue-400" data-i18n="f1_t">No IR blaster required</h3>
+          <p class="text-slate-300" data-i18n="f1_d">Works on phones and tablets that have no infrared hardware. All control happens over your local Wi-Fi network.</p>
         </div>
         <div class="glass rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-3 text-green-400">Auto-discovery</h3>
-          <p class="text-slate-300">Open the app and your devices appear automatically. No manual IP entry, no configuration files.</p>
+          <h3 class="text-xl font-bold mb-3 text-green-400" data-i18n="f2_t">Auto-discovery</h3>
+          <p class="text-slate-300" data-i18n="f2_d">Open the app and your devices appear automatically. No manual IP entry, no configuration files.</p>
         </div>
         <div class="glass rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-3 text-purple-400">Cross-platform</h3>
-          <p class="text-slate-300">Same experience on iOS, Android, and Windows. Pick up any device and control your home theater.</p>
+          <h3 class="text-xl font-bold mb-3 text-purple-400" data-i18n="f3_t">Cross-platform</h3>
+          <p class="text-slate-300" data-i18n="f3_d">Same experience on iOS, Android, and Windows. Pick up any device and control your home theater.</p>
         </div>
       </div>
     </div>
@@ -117,22 +130,22 @@
   <!-- How It Works -->
   <section class="py-20 px-6 bg-slate-900">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12">How It Works</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-12" data-i18n="sec_how">How It Works</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <div>
           <div class="text-4xl font-extrabold text-blue-500 mb-3">1</div>
-          <h3 class="font-bold text-lg mb-2">Connect to Wi-Fi</h3>
-          <p class="text-slate-400">Make sure your phone/tablet and your AV gear are on the same network.</p>
+          <h3 class="font-bold text-lg mb-2" data-i18n="h1_t">Connect to Wi-Fi</h3>
+          <p class="text-slate-400" data-i18n="h1_d">Make sure your phone/tablet and your AV gear are on the same network.</p>
         </div>
         <div>
           <div class="text-4xl font-extrabold text-blue-500 mb-3">2</div>
-          <h3 class="font-bold text-lg mb-2">Open CinaHub</h3>
-          <p class="text-slate-400">The app scans your network and lists all supported devices automatically.</p>
+          <h3 class="font-bold text-lg mb-2" data-i18n="h2_t">Open CinaHub</h3>
+          <p class="text-slate-400" data-i18n="h2_d">The app scans your network and lists all supported devices automatically.</p>
         </div>
         <div>
           <div class="text-4xl font-extrabold text-blue-500 mb-3">3</div>
-          <h3 class="font-bold text-lg mb-2">Tap to control</h3>
-          <p class="text-slate-400">Adjust volume, switch inputs, control playback, power on/off — from anywhere in your home.</p>
+          <h3 class="font-bold text-lg mb-2" data-i18n="h3_t">Tap to control</h3>
+          <p class="text-slate-400" data-i18n="h3_d">Adjust volume, switch inputs, control playback, power on/off — from anywhere in your home.</p>
         </div>
       </div>
     </div>
@@ -141,19 +154,19 @@
   <!-- CTA -->
   <section class="py-20 px-6 bg-blue-600 text-center">
     <div class="max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">Take back control of your home theater</h2>
-      <p class="text-xl mb-8 text-blue-100">Download CinaHub free today.</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6" data-i18n="cta_t">Take back control of your home theater</h2>
+      <p class="text-xl mb-8 text-blue-100" data-i18n="cta_d">Download CinaHub free today.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="https://apps.microsoft.com/store/detail/9pdxn0618930" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 rounded-xl font-bold hover:bg-blue-50 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 rounded-xl font-bold hover:bg-blue-50 transition" data-i18n="cta_ms">
           Microsoft Store
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.cinahub.app" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition" data-i18n="cta_gp">
           Google Play
         </a>
         <a href="https://apps.apple.com/us/app/cinahub/id6790016957" target="_blank" rel="noopener"
-           class="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition">
+           class="inline-flex items-center justify-center px-8 py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition" data-i18n="cta_as">
           App Store
         </a>
       </div>
@@ -163,13 +176,187 @@
   <!-- FAQ / Footer -->
   <footer class="py-12 px-6 bg-slate-950 text-slate-400 text-center">
     <div class="max-w-3xl mx-auto">
-      <p class="mb-4">Brand names listed are for compatibility indication only. Trademarks belong to their respective owners.</p>
+      <p class="mb-4" data-i18n="foot_brand">Brand names listed are for compatibility indication only. Trademarks belong to their respective owners.</p>
       <p class="mb-4">
-        <a href="https://benjamin-ly777.github.io/cinahub/privacy.html" class="underline hover:text-white">Privacy Policy</a>
+        <a href="https://benjamin-ly777.github.io/cinahub/privacy.html" class="underline hover:text-white" data-i18n="foot_privacy">Privacy Policy</a>
       </p>
-      <p class="text-sm">© 2026 CinaHub. All rights reserved.</p>
+      <p class="text-sm" data-i18n="foot_copy">© 2026 CinaHub. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const I18N = {
+      en: {
+        title: "CinaHub — Universal TV & AV Remote over Wi-Fi",
+        meta_desc: "CinaHub turns any phone or tablet into a universal remote for Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku and VidOn — no IR blaster needed.",
+        hero_sub: "Universal TV & AV Remote — No IR Needed",
+        hero_desc: "Control your Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku and VidOn devices over Wi-Fi. Any phone or tablet works, even without an infrared blaster.",
+        nav_ms: "Get it on Microsoft Store", nav_gp: "Get it on Google Play", nav_as: "Download on the App Store",
+        tag_wifi: "Wi-Fi / LAN control", tag_discovery: "Auto device discovery", tag_lang: "6 languages", tag_free: "Free",
+        sec_devices: "Supported Devices",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "Why CinaHub?",
+        f1_t: "No IR blaster required", f1_d: "Works on phones and tablets that have no infrared hardware. All control happens over your local Wi-Fi network.",
+        f2_t: "Auto-discovery", f2_d: "Open the app and your devices appear automatically. No manual IP entry, no configuration files.",
+        f3_t: "Cross-platform", f3_d: "Same experience on iOS, Android, and Windows. Pick up any device and control your home theater.",
+        sec_how: "How It Works",
+        h1_t: "Connect to Wi-Fi", h1_d: "Make sure your phone/tablet and your AV gear are on the same network.",
+        h2_t: "Open CinaHub", h2_d: "The app scans your network and lists all supported devices automatically.",
+        h3_t: "Tap to control", h3_d: "Adjust volume, switch inputs, control playback, power on/off — from anywhere in your home.",
+        cta_t: "Take back control of your home theater", cta_d: "Download CinaHub free today.",
+        cta_ms: "Microsoft Store", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "Brand names listed are for compatibility indication only. Trademarks belong to their respective owners.",
+        foot_privacy: "Privacy Policy", foot_copy: "© 2026 CinaHub. All rights reserved."
+      },
+      zh: {
+        title: "CinaHub — 万能电视与 AV 遥控器（Wi-Fi 控制）",
+        meta_desc: "CinaHub 将任意手机或平板变成 Denon、Marantz、Apple TV、Sony、Samsung、Xiaomi、Roku 和 VidOn 的万能遥控器——无需红外发射器。",
+        hero_sub: "万能电视 & AV 遥控器 — 无需红外",
+        hero_desc: "通过 Wi-Fi 控制你的 Denon、Marantz、Apple TV、Sony、Samsung、Xiaomi、Roku 和 VidOn 设备。任何手机或平板都能用，即使没有红外发射器。",
+        nav_ms: "在微软商店获取", nav_gp: "在 Google Play 获取", nav_as: "在 App Store 下载",
+        tag_wifi: "Wi-Fi / 局域网控制", tag_discovery: "设备自动发现", tag_lang: "支持 6 种语言", tag_free: "免费",
+        sec_devices: "支持的设备",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "为什么选择 CinaHub？",
+        f1_t: "无需红外发射器", f1_d: "在没有红外硬件的手机和平板上也能使用。所有控制都通过你的本地 Wi-Fi 网络完成。",
+        f2_t: "自动发现", f2_d: "打开 App，你的设备会自动出现。无需手动输入 IP，无需配置文件。",
+        f3_t: "跨平台", f3_d: "在 iOS、Android 和 Windows 上体验一致。拿起任意设备即可掌控家庭影院。",
+        sec_how: "使用步骤",
+        h1_t: "连接 Wi-Fi", h1_d: "确保你的手机/平板与影音设备在同一网络中。",
+        h2_t: "打开 CinaHub", h2_d: "App 会自动扫描网络并列出所有受支持的设备。",
+        h3_t: "点击即可控制", h3_d: "调节音量、切换输入源、控制播放、开关机——在家中的任何角落都能操作。",
+        cta_t: "重新掌控你的家庭影院", cta_d: "立即免费下载 CinaHub。",
+        cta_ms: "微软商店", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "所列品牌名称仅用于兼容性说明，商标归各自所有者所有。",
+        foot_privacy: "隐私政策", foot_copy: "© 2026 CinaHub. 保留所有权利。"
+      },
+      ja: {
+        title: "CinaHub — 万能 TV & AV リモコン（Wi-Fi 対応）",
+        meta_desc: "CinaHub はどのスマホやタブレットでも Denon、Marantz、Apple TV、Sony、Samsung、Xiaomi、Roku、VidOn の万能リモコンに。赤外線不要。",
+        hero_sub: "万能 TV & AV リモコン — 赤外線不要",
+        hero_desc: "Wi-Fi 経由で Denon、Marantz、Apple TV、Sony、Samsung、Xiaomi、Roku、VidOn の機器を操作できます。赤外線送信機がなくても、どのスマホやタブレットでも動作します。",
+        nav_ms: "Microsoft Store で入手", nav_gp: "Google Play で入手", nav_as: "App Store でダウンロード",
+        tag_wifi: "Wi-Fi / LAN 制御", tag_discovery: "デバイス自動検出", tag_lang: "6 か国語対応", tag_free: "無料",
+        sec_devices: "対応デバイス",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "CinaHub の魅力",
+        f1_t: "赤外線不要", f1_d: "赤外線ハードウェアのないスマホやタブレットでも使えます。すべての操作はローカル Wi-Fi ネットワーク経由で行われます。",
+        f2_t: "自動検出", f2_d: "アプリを開くと対応デバイスが自動的に表示されます。IP の手入力や設定ファイルは不要です。",
+        f3_t: "クロスプラットフォーム", f3_d: "iOS、Android、Windows で同じ体験を。どのデバイスでもホームシアターを操作できます。",
+        sec_how: "使い方",
+        h1_t: "Wi-Fi に接続", h1_d: "スマホ/タブレットと AV 機器が同じネットワークにあることを確認してください。",
+        h2_t: "CinaHub を開く", h2_d: "アプリがネットワークをスキャンし、対応デバイスを自動的に一覧表示します。",
+        h3_t: "タップして操作", h3_d: "音量調整、入力切替、再生コントロール、電源オン/オフ——家中どこからでも操作できます。",
+        cta_t: "ホームシアターを取り戻そう", cta_d: "今すぐ CinaHub を無料ダウンロード。",
+        cta_ms: "Microsoft Store", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "記載されたブランド名は互換性の説明のみを目的としており、商標は各所有者に帰属します。",
+        foot_privacy: "プライバシーポリシー", foot_copy: "© 2026 CinaHub. All rights reserved."
+      },
+      de: {
+        title: "CinaHub — Universale TV- & AV-Fernbedienung über Wi-Fi",
+        meta_desc: "CinaHub verwandelt jedes Smartphone oder Tablet in eine universelle Fernbedienung für Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku und VidOn — ohne Infrarot.",
+        hero_sub: "Universale TV- & AV-Fernbedienung — ohne Infrarot",
+        hero_desc: "Steuern Sie Ihre Denon-, Marantz-, Apple TV-, Sony-, Samsung-, Xiaomi-, Roku- und VidOn-Geräte über Wi-Fi. Jedes Smartphone oder Tablet funktioniert — selbst ohne Infrarotsender.",
+        nav_ms: "Im Microsoft Store laden", nav_gp: "Bei Google Play laden", nav_as: "Im App Store laden",
+        tag_wifi: "Wi-Fi / LAN-Steuerung", tag_discovery: "Automatische Geräteerkennung", tag_lang: "6 Sprachen", tag_free: "Kostenlos",
+        sec_devices: "Unterstützte Geräte",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "Warum CinaHub?",
+        f1_t: "Kein Infrarotsender nötig", f1_d: "Funktioniert auf Smartphones und Tablets ohne Infrarot-Hardware. Die gesamte Steuerung läuft über Ihr lokales Wi-Fi-Netzwerk.",
+        f2_t: "Automatische Erkennung", f2_d: "Öffnen Sie die App, und Ihre Geräte erscheinen automatisch. Keine manuelle IP-Eingabe, keine Konfigurationsdateien.",
+        f3_t: "Plattformübergreifend", f3_d: "Gleiches Erlebnis auf iOS, Android und Windows. Greifen Sie zu jedem Gerät und steuern Sie Ihr Heimkino.",
+        sec_how: "So funktioniert's",
+        h1_t: "Mit Wi-Fi verbinden", h1_d: "Stellen Sie sicher, dass Smartphone/Tablet und AV-Geräte im selben Netzwerk sind.",
+        h2_t: "CinaHub öffnen", h2_d: "Die App scannt Ihr Netzwerk und listet alle unterstützten Geräte automatisch auf.",
+        h3_t: "Zum Steuern tippen", h3_d: "Lautstärke regeln, Eingänge umschalten, Wiedergabe steuern, Ein/Aus — von überall zu Hause.",
+        cta_t: "Übernehmen Sie die Kontrolle über Ihr Heimkino", cta_d: "Laden Sie CinaHub noch heute kostenlos herunter.",
+        cta_ms: "Microsoft Store", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "Genannte Markennamen dienen lediglich der Kompatibilitätsangabe. Marken gehören ihren jeweiligen Inhabern.",
+        foot_privacy: "Datenschutzrichtlinie", foot_copy: "© 2026 CinaHub. Alle Rechte vorbehalten."
+      },
+      es: {
+        title: "CinaHub — Mando universal de TV y AV por Wi-Fi",
+        meta_desc: "CinaHub convierte cualquier móvil o tablet en un mando universal para Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku y VidOn — sin infrarrojos.",
+        hero_sub: "Mando universal de TV y AV — sin infrarrojos",
+        hero_desc: "Controla tus dispositivos Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku y VidOn por Wi-Fi. Funciona en cualquier móvil o tablet, incluso sin emisor infrarrojo.",
+        nav_ms: "Consíguelo en Microsoft Store", nav_gp: "Consíguelo en Google Play", nav_as: "Descárgalo en App Store",
+        tag_wifi: "Control por Wi-Fi / LAN", tag_discovery: "Detección automática de dispositivos", tag_lang: "6 idiomas", tag_free: "Gratis",
+        sec_devices: "Dispositivos compatibles",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "¿Por qué CinaHub?",
+        f1_t: "Sin emisor infrarrojo", f1_d: "Funciona en móviles y tablets sin hardware infrarrojo. Todo el control se realiza a través de tu red Wi-Fi local.",
+        f2_t: "Detección automática", f2_d: "Abre la app y tus dispositivos aparecen solos. Sin introducir IP manualmente, sin archivos de configuración.",
+        f3_t: "Multiplataforma", f3_d: "La misma experiencia en iOS, Android y Windows. Coge cualquier dispositivo y controla tu cine en casa.",
+        sec_how: "Cómo funciona",
+        h1_t: "Conéctate al Wi-Fi", h1_d: "Asegúrate de que tu móvil/tablet y tus equipos AV estén en la misma red.",
+        h2_t: "Abre CinaHub", h2_d: "La app escanea tu red y muestra automáticamente todos los dispositivos compatibles.",
+        h3_t: "Toca para controlar", h3_d: "Ajusta el volumen, cambia de entrada, controla la reproducción, enciende/apaga — desde cualquier lugar de casa.",
+        cta_t: "Recupera el control de tu cine en casa", cta_d: "Descarga CinaHub gratis hoy.",
+        cta_ms: "Microsoft Store", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "Las marcas mencionadas se indican solo a efectos de compatibilidad. Las marcas pertenecen a sus respectivos dueños.",
+        foot_privacy: "Política de privacidad", foot_copy: "© 2026 CinaHub. Todos los derechos reservados."
+      },
+      pt: {
+        title: "CinaHub — Controle universal de TV e AV via Wi-Fi",
+        meta_desc: "O CinaHub transforma qualquer celular ou tablet em um controle universal para Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku e VidOn — sem infravermelho.",
+        hero_sub: "Controle universal de TV e AV — sem infravermelho",
+        hero_desc: "Controle seus dispositivos Denon, Marantz, Apple TV, Sony, Samsung, Xiaomi, Roku e VidOn via Wi-Fi. Funciona em qualquer celular ou tablet, mesmo sem emissor infravermelho.",
+        nav_ms: "Baixe na Microsoft Store", nav_gp: "Baixe no Google Play", nav_as: "Baixe na App Store",
+        tag_wifi: "Controle por Wi-Fi / LAN", tag_discovery: "Detecção automática de dispositivos", tag_lang: "6 idiomas", tag_free: "Grátis",
+        sec_devices: "Dispositivos compatíveis",
+        dev_denon: "Denon AVR", dev_marantz: "Marantz AVR", dev_appletv: "Apple TV", dev_sony: "Sony BRAVIA",
+        dev_samsung: "Samsung TV", dev_xiaomi: "Xiaomi / Redmi TV", dev_roku: "Roku", dev_vidon: "VidOn",
+        sec_why: "Por que CinaHub?",
+        f1_t: "Sem emissor infravermelho", f1_d: "Funciona em celulares e tablets sem hardware infravermelho. Todo o controle acontece pela sua rede Wi-Fi local.",
+        f2_t: "Detecção automática", f2_d: "Abra o app e seus dispositivos aparecem automaticamente. Sem inserir IP manualmente, sem arquivos de configuração.",
+        f3_t: "Multiplataforma", f3_d: "A mesma experiência no iOS, Android e Windows. Pegue qualquer dispositivo e controle seu home theater.",
+        sec_how: "Como funciona",
+        h1_t: "Conecte-se ao Wi-Fi", h1_d: "Certifique-se de que seu celular/tablet e seus equipamentos AV estão na mesma rede.",
+        h2_t: "Abra o CinaHub", h2_d: "O app varre sua rede e lista automaticamente todos os dispositivos compatíveis.",
+        h3_t: "Toque para controlar", h3_d: "Ajuste o volume, troque de entrada, controle a reprodução, ligue/desligue — de qualquer lugar da casa.",
+        cta_t: "Recupere o controle do seu home theater", cta_d: "Baixe o CinaHub grátis hoje.",
+        cta_ms: "Microsoft Store", cta_gp: "Google Play", cta_as: "App Store",
+        foot_brand: "As marcas citadas são apenas para indicação de compatibilidade. As marcas pertencem aos seus respectivos donos.",
+        foot_privacy: "Política de Privacidade", foot_copy: "© 2026 CinaHub. Todos os direitos reservados."
+      }
+    };
+
+    function detectLang() {
+      const saved = localStorage.getItem('cinahub_lang');
+      if (saved && I18N[saved]) return saved;
+      const nav = navigator.language || navigator.userLanguage || 'en';
+      const base = nav.slice(0, 2).toLowerCase();
+      return I18N[base] ? base : 'en';
+    }
+
+    function applyLang(lang) {
+      const t = I18N[lang] || I18N.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.title = t.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute('content', t.meta_desc);
+      document.documentElement.lang = lang;
+      const sel = document.getElementById('langSelect');
+      if (sel) sel.value = lang;
+    }
+
+    const sel = document.getElementById('langSelect');
+    sel.addEventListener('change', () => {
+      const l = sel.value;
+      localStorage.setItem('cinahub_lang', l);
+      applyLang(l);
+    });
+
+    applyLang(detectLang());
+  </script>
 
 </body>
 </html>
