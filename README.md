@@ -45,7 +45,7 @@ CinaHub is a free, cross‑platform remote‑control app. Instead of juggling a 
 Pick your platform:
 
 - **iPhone / iPad** — [App Store](https://apps.apple.com/us/app/cinahub/id6790016957?utm_source=github&utm_medium=repo)
-- **Android** — [Google Play](https://play.google.com/store/apps/details?id=com.cinahub.app&utm_source=github&utm_medium=repo) or sideload the latest APK from [GitHub Releases](https://github.com/Benjamin-LY777/cinahub/releases)
+- **Android** — [Google Play](https://play.google.com/store/apps/details?id=com.cinahub.app&utm_source=github&utm_medium=repo) or sideload the v1.2.3 APK from [GitHub Releases](https://github.com/Benjamin-LY777/cinahub/releases/tag/v1.2.3)
 - **Windows** — [Microsoft Store](https://apps.microsoft.com/store/detail/9pdxn0618930?utm_source=github&utm_medium=repo)
 
 > Android users in regions without Google Play can install the APK from GitHub Releases. Allow "Install from unknown sources" when prompted.
